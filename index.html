@@ -17,114 +17,150 @@
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- CSS Files -->
+  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="index-page">
 
-  <header id="header" class="header">
-    <div class="container">
-      <h1>Alexander Geurkov</h1>
-      <h2>SAP Consultant | System Engineer</h2>
-      <p>Bunte Berna 15A, 34123 Kassel | 0163-9846859 | linked2ag@gmail.com</p>
+  <header id="header" class="header dark-background d-flex flex-column">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+
+    <div class="profile-img">
+      <img src="assets/img/my-profile-img.png" alt="" class="img-fluid rounded-circle">
     </div>
+
+    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
+      <h1 class="sitename">Alexander Geurkov</h1>
+    </a>
+
+    <div class="social-links text-center">
+      <a href="https://github.com" class="github"><i class="bi bi-github"></i></a>
+      <a href="http://www.linkedin.com" class="linkedin"><i class="bi bi-linkedin"></i></a>
+    </div>
+
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i> Home</a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
+        <li><a href="#skills"><i class="bi bi-bar-chart navicon"></i> Skills</a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
+        <li><a href="#projects"><i class="bi bi-hdd-stack navicon"></i> Projects</a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main">
+  <main class="main">
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero section dark-background">
+      <div class="container" data-aos="fade-up">
+        <h2>Alexander Geurkov</h2>
+        <p>I am <span id="typed-text"></span></p>
+      </div>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-      <div class="container">
-        <h2>About Me</h2>
+    <section id="about" class="about section">
+      <div class="container section-title">
+        <h2>About</h2>
         <p>
-          I am an experienced SAP Consultant with extensive expertise in business process optimization, digital document
-          management, and system integration. My focus is on enhancing Procure-to-Pay and Order-to-Cash workflows and developing custom SAP applications to meet client needs.
+          I am an experienced SAP Consultant specializing in business process optimization, document management, and system integration. I bring over 20 years of expertise in SAP development, with a focus on enhancing Procure-to-Pay and Order-to-Cash processes.
         </p>
       </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-      <div class="container">
-        <h2>Education</h2>
-        <ul>
-          <li>
-            <h4>Diplom als Systemingenieur</h4>
-            <p>Georgische Technische Universität, Tbilisi, Georgien</p>
-            <span>1996 – 2001</span>
-            <p>Field of Study: Informationswissenschaft und Steuerungssysteme</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Professional Experience Section -->
-    <section id="experience" class="experience">
-      <div class="container">
-        <h2>Professional Experience</h2>
-        <div>
-          <h4>SAP Consultant</h4>
-          <p>CTI Consulting GmbH, Kassel, Deutschland</p>
-          <span>09/2018 – aktuell</span>
-          <ul>
-            <li>Business process optimization (Procure-to-Pay, Order-to-Cash)</li>
-            <li>Digital document management and workflow development</li>
-            <li>PLM master data management and distribution</li>
-            <li>Technologies: SAP Workflow, Smartforms, E-Invoicing, ABAP</li>
-          </ul>
-        </div>
-        <div>
-          <h4>IT-Project Manager</h4>
-          <p>Zeller Bäderbau GmbH, Heidenheim, Deutschland</p>
-          <span>11/2008 – 09/2017</span>
-          <ul>
-            <li>Development and optimization of IT and CAD systems</li>
-            <li>Automation of processes between design and production teams</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-      <div class="container">
+    <section id="skills" class="skills section light-background">
+      <div class="container section-title">
         <h2>Skills</h2>
+      </div>
+      <div class="container">
         <ul>
           <li>SAP ABAP Development</li>
           <li>SAP Folders Management</li>
           <li>SAP Adobe Forms</li>
           <li>OpenText Extended ECM for SAP Solutions</li>
           <li>Data and Process Modeling</li>
+          <li>PHP, HTML, VBA, JavaScript</li>
         </ul>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <!-- Resume Section -->
+    <section id="resume" class="resume section">
+      <div class="container section-title">
+        <h2>Resume</h2>
+      </div>
       <div class="container">
-        <h2>Key Projects</h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>SAP Consultant</h4>
+              <h5>09/2018 – Present</h5>
+              <p><em>CTI Consulting GmbH, Kassel, Germany</em></p>
+              <ul>
+                <li>Business process optimization (Procure-to-Pay, Order-to-Cash)</li>
+                <li>Digital document management and workflow development</li>
+                <li>PLM master data management and distribution</li>
+                <li>Technologies: SAP Workflow, Smartforms, ABAP</li>
+              </ul>
+            </div>
+            <div class="resume-item">
+              <h4>IT Project Manager</h4>
+              <h5>11/2008 – 09/2017</h5>
+              <p><em>Zeller Bäderbau GmbH, Heidenheim, Germany</em></p>
+              <ul>
+                <li>Optimized IT and CAD system integrations</li>
+                <li>Automated workflows between design and production</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Diplom als Systemingenieur</h4>
+              <h5>1996 – 2001</h5>
+              <p><em>Georgische Technische Universität, Tbilisi, Georgien</em></p>
+              <p>Field of Study: Informationswissenschaft und Steuerungssysteme</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+      <div class="container section-title">
+        <h2>Projects</h2>
+      </div>
+      <div class="container">
         <ul>
           <li>
             <h4>Digital Water File</h4>
-            <p>Developed a digital water file system with SAP IS-U integration.</p>
+            <p>Developed a digital water file with SAP IS-U integration.</p>
           </li>
           <li>
             <h4>Invoice Management Interface</h4>
-            <p>Implemented SAP interfaces for invoice processing with OCR and XML technologies.</p>
+            <p>Designed interfaces for OCR invoice processing in SAP.</p>
           </li>
         </ul>
       </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <div class="container">
+    <section id="contact" class="contact section">
+      <div class="container section-title">
         <h2>Contact</h2>
-        <p>Feel free to reach out for collaboration or consultation.</p>
-        <p>Phone: 0163-9846859 | Email: linked2ag@gmail.com</p>
+      </div>
+      <div class="container">
+        <p>Feel free to reach out for collaboration or consultation:</p>
+        <p>Phone: 0163-9846859</p>
+        <p>Email: linked2ag@gmail.com</p>
       </div>
     </section>
 
@@ -137,8 +173,112 @@
     </div>
   </footer>
 
-  <!-- JavaScript Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-5">
+
+            <div class="info-wrap">
+              
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Call</h3>
+                  <p>+49 176-457-737-63</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>vivekrabadiya54@gmail.com</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48389.78314118045!2d9.1316248!3d51.3148546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb3f4e9f7a6c1d%3A0x2f84633d58221747!2sKassel!5e0!3m2!1sen!2sde!4v1696364000000" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <label for="name-field" class="pb-2">Your Name</label>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="subject-field" class="pb-2">Subject</label>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <label for="message-field" class="pb-2">Message</label>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
 </body>
 
 </html>
