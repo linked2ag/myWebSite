@@ -651,7 +651,7 @@
     });
   });
 
-    // Geburtstagsdatum
+  // Geburtstagsdatum
   const birthday = new Date("1979-05-18");
 
   // Heutiges Datum
@@ -659,7 +659,15 @@
 
   // Alter berechnen
   let age = today.getFullYear() - birthday.getFullYear();
+  const monthDiff = today.getMonth() - birthday.getMonth();
+  const dayDiff = today.getDate() - birthday.getDate();
+
+  // Korrigieren, wenn noch kein Geburtstag in diesem Jahr war
+  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+    age--;
+  }
 
   // Alter ins HTML einfügen
   document.getElementById("age").textContent = age;
+
 </script>
