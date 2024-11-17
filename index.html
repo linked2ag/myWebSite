@@ -623,37 +623,6 @@
 
   </main>
 
-document.getElementById("submit-button").addEventListener("click", function () {
-  const form = document.querySelector(".php-email-form");
-  const formData = new FormData(form);
-
-  // Füge die hochgeladenen Dateien hinzu
-  const attachments = document.getElementById("attachment-field").files;
-  for (let i = 0; i < attachments.length; i++) {
-    formData.append("attachments[]", attachments[i]);
-  }
-
-  // Sende das Formular und die Anhänge
-  fetch('forms/contact.php', {
-    method: 'POST',
-    body: formData
-  })
-    .then(response => response.text())
-    .then(data => {
-      if (data.trim() === 'success') {
-        document.querySelector('.sent-message').style.display = 'block';
-        document.querySelector('.error-message').style.display = 'none';
-        form.reset(); // Setzt das Formular zurück
-      } else {
-        document.querySelector('.error-message').style.display = 'block';
-        document.querySelector('.sent-message').style.display = 'none';
-      }
-    })
-    .catch(error => {
-      document.querySelector('.error-message').style.display = 'block';
-      document.querySelector('.sent-message').style.display = 'none';
-    });
-});
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -681,6 +650,39 @@ document.getElementById("submit-button").addEventListener("click", function () {
 </html>
 
 <script>
+
+  document.getElementById("submit-button").addEventListener("click", function () {
+      const form = document.querySelector(".php-email-form");
+      const formData = new FormData(form);
+
+      // Füge die hochgeladenen Dateien hinzu
+      const attachments = document.getElementById("attachment-field").files;
+      for (let i = 0; i < attachments.length; i++) {
+        formData.append("attachments[]", attachments[i]);
+      }
+
+      // Sende das Formular und die Anhänge
+      fetch('forms/contact.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.text())
+        .then(data => {
+          if (data.trim() === 'success') {
+            document.querySelector('.sent-message').style.display = 'block';
+            document.querySelector('.error-message').style.display = 'none';
+            form.reset(); // Setzt das Formular zurück
+          } else {
+            document.querySelector('.error-message').style.display = 'block';
+            document.querySelector('.sent-message').style.display = 'none';
+          }
+        })
+        .catch(error => {
+          document.querySelector('.error-message').style.display = 'block';
+          document.querySelector('.sent-message').style.display = 'none';
+        });
+    });
+
     document.getElementById("submit-button").addEventListener("click", function() {
     const form = document.getElementById("contact-form");
     const formData = new FormData(form);
