@@ -574,40 +574,43 @@
             </div>
           </div>
 
-      <div class="col-lg-7">
-            <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-lg-7">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
+
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required>
+                  <input type="text" name="name" id="name-field" class="form-control" required="">
                 </div>
 
                 <div class="col-md-6">
                   <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" name="email" id="email-field" class="form-control" required>
+                  <input type="email" class="form-control" name="email" id="email-field" required="">
                 </div>
 
                 <div class="col-md-12">
                   <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" name="subject" id="subject-field" class="form-control" required>
+                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
                 </div>
 
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Message</label>
-                  <textarea name="message" rows="10" id="message-field" class="form-control" required></textarea>
+                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
                 </div>
 
                 <div class="col-md-12">
                   <label for="attachment-field" class="pb-2">Attachment</label>
-                  <input type="file" name="attachments" id="attachment-field" class="form-control" multiple>
+                  <input type="file" name="attachments[]" id="attachment-field" class="form-control" multiple>
                 </div>
 
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
-                  <button type="button" id="submit-button">Send Message</button>
+
+                  <button type="submit" id="submit-button">Send Message</button>
                 </div>
+
               </div>
             </form>
           </div><!-- End Contact Form -->
@@ -620,7 +623,37 @@
 
   </main>
 
+document.getElementById("submit-button").addEventListener("click", function () {
+  const form = document.querySelector(".php-email-form");
+  const formData = new FormData(form);
 
+  // Füge die hochgeladenen Dateien hinzu
+  const attachments = document.getElementById("attachment-field").files;
+  for (let i = 0; i < attachments.length; i++) {
+    formData.append("attachments[]", attachments[i]);
+  }
+
+  // Sende das Formular und die Anhänge
+  fetch('forms/contact.php', {
+    method: 'POST',
+    body: formData
+  })
+    .then(response => response.text())
+    .then(data => {
+      if (data.trim() === 'success') {
+        document.querySelector('.sent-message').style.display = 'block';
+        document.querySelector('.error-message').style.display = 'none';
+        form.reset(); // Setzt das Formular zurück
+      } else {
+        document.querySelector('.error-message').style.display = 'block';
+        document.querySelector('.sent-message').style.display = 'none';
+      }
+    })
+    .catch(error => {
+      document.querySelector('.error-message').style.display = 'block';
+      document.querySelector('.sent-message').style.display = 'none';
+    });
+});
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
