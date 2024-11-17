@@ -574,38 +574,40 @@
             </div>
           </div>
 
-          <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+      <div class="col-lg-7">
+            <form id="contact-form" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
-
                 <div class="col-md-6">
                   <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                  <input type="text" name="name" id="name-field" class="form-control" required>
                 </div>
 
                 <div class="col-md-6">
                   <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <input type="email" name="email" id="email-field" class="form-control" required>
                 </div>
 
                 <div class="col-md-12">
                   <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <input type="text" name="subject" id="subject-field" class="form-control" required>
                 </div>
 
                 <div class="col-md-12">
                   <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                  <textarea name="message" rows="10" id="message-field" class="form-control" required></textarea>
+                </div>
+
+                <div class="col-md-12">
+                  <label for="attachment-field" class="pb-2">Attachment</label>
+                  <input type="file" name="attachments" id="attachment-field" class="form-control" multiple>
                 </div>
 
                 <div class="col-md-12 text-center">
                   <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
+                  <button type="button" id="submit-button">Send Message</button>
                 </div>
-
               </div>
             </form>
           </div><!-- End Contact Form -->
@@ -613,59 +615,6 @@
         </div>
 
       </div>
-
-      <?php
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $to = "linked2ag@gmail.com";
-    $subject = $_POST['subject'];
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    $headers = "From: $name <$email>\r\n";
-    $headers .= "Reply-To: $email\r\n";
-
-    // Create a boundary for attachments
-    $boundary = md5("random");
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
-
-    // Message Body
-    $body = "--$boundary\r\n";
-    $body .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
-    $body .= chunk_split(base64_encode("Name: $name\nEmail: $email\n\n$message"));
-
-    // Handle attachments
-    if (!empty($_FILES['attachments']['name'][0])) {
-        foreach ($_FILES['attachments']['tmp_name'] as $key => $tmp_name) {
-            if (is_uploaded_file($tmp_name)) {
-                $file_name = $_FILES['attachments']['name'][$key];
-                $file_data = file_get_contents($tmp_name);
-                $file_type = mime_content_type($tmp_name);
-
-                $body .= "--$boundary\r\n";
-                $body .= "Content-Type: $file_type; name=\"$file_name\"\r\n";
-                $body .= "Content-Disposition: attachment; filename=\"$file_name\"\r\n";
-                $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
-                $body .= chunk_split(base64_encode($file_data));
-            }
-        }
-    }
-
-    $body .= "--$boundary--";
-
-    // Send the email
-    if (mail($to, $subject, $body, $headers)) {
-        echo "Your message has been sent successfully.";
-    } else {
-        echo "There was an error sending your message. Please try again.";
-    }
-} else {
-    echo "Invalid request.";
-}
-?>
 
     </section><!-- /Contact Section -->
 
@@ -699,6 +648,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </html>
 
 <script>
+    document.getElementById("submit-button").addEventListener("click", function() {
+    const form = document.getElementById("contact-form");
+    const formData = new FormData(form);
+
+    // Add attachments
+    const attachments = document.getElementById("attachment-field").files;
+    for (let i = 0; i < attachments.length; i++) {
+      formData.append("attachments[]", attachments[i]);
+    }
+
+    // Send the email using a mock API or external email service
+    fetch("https://example-email-api.com/send", { // Replace with your email API
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => {
+        if (response.ok) {
+          document.querySelector(".sent-message").style.display = "block";
+          document.querySelector(".error-message").style.display = "none";
+          form.reset();
+        } else {
+          document.querySelector(".sent-message").style.display = "none";
+          document.querySelector(".error-message").textContent =
+            "There was an error sending your message. Please try again.";
+          document.querySelector(".error-message").style.display = "block";
+        }
+      })
+      .catch((error) => {
+        document.querySelector(".sent-message").style.display = "none";
+        document.querySelector(".error-message").textContent =
+          "There was an error sending your message. Please try again.";
+        document.querySelector(".error-message").style.display = "block";
+      });
+  });
   document.querySelector('.php-email-form').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent default form submission
     const formData = new FormData(this);
