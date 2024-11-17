@@ -121,7 +121,6 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>18 Mai 1979</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.ageurkov.info</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+49-163-98-46-859</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Kassel, Germany</span></li>
                 </ul>
@@ -129,9 +128,8 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span id="age"></span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Systems Engineering and Computer Science</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>linked2ag@gmail.com</span></li>
-      
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Systems Engineering of Computer Science</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.ageurkov.info</span></li>
                 </ul>
               </div>
             </div>
@@ -568,15 +566,7 @@
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
                   <h3>Call</h3>
-                  <p>+49 176-457-737-63</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>vivekrabadiya54@gmail.com</p>
+                  <p>+49-163-98-46-859</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -623,6 +613,59 @@
         </div>
 
       </div>
+
+      <?php
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $to = "linked2ag@gmail.com";
+    $subject = $_POST['subject'];
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $message = htmlspecialchars($_POST['message']);
+
+    $headers = "From: $name <$email>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    // Create a boundary for attachments
+    $boundary = md5("random");
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+
+    // Message Body
+    $body = "--$boundary\r\n";
+    $body .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
+    $body .= chunk_split(base64_encode("Name: $name\nEmail: $email\n\n$message"));
+
+    // Handle attachments
+    if (!empty($_FILES['attachments']['name'][0])) {
+        foreach ($_FILES['attachments']['tmp_name'] as $key => $tmp_name) {
+            if (is_uploaded_file($tmp_name)) {
+                $file_name = $_FILES['attachments']['name'][$key];
+                $file_data = file_get_contents($tmp_name);
+                $file_type = mime_content_type($tmp_name);
+
+                $body .= "--$boundary\r\n";
+                $body .= "Content-Type: $file_type; name=\"$file_name\"\r\n";
+                $body .= "Content-Disposition: attachment; filename=\"$file_name\"\r\n";
+                $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
+                $body .= chunk_split(base64_encode($file_data));
+            }
+        }
+    }
+
+    $body .= "--$boundary--";
+
+    // Send the email
+    if (mail($to, $subject, $body, $headers)) {
+        echo "Your message has been sent successfully.";
+    } else {
+        echo "There was an error sending your message. Please try again.";
+    }
+} else {
+    echo "Invalid request.";
+}
+?>
 
     </section><!-- /Contact Section -->
 
