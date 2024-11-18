@@ -988,7 +988,7 @@ ul li i {
 }
 
 ul li strong {
-  width: 100px; /* Eine feste Breite für Konsistenz */
+  width: 200px; /* Eine feste Breite für Konsistenz */
 }
 
 ul li span {
