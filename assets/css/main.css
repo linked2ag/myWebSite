@@ -631,29 +631,29 @@ section,
   padding: 0;
 }
 
-/* Hauptausrichtung für die Liste */
 .about .content ul li {
-  display: flex; /* Flexbox verwenden */
+  display: flex;
   align-items: flex-start; /* Top-Bündigkeit */
-  margin-bottom: 15px; /* Optional: Abstand zwischen den Listenelementen */
+  margin-bottom: 15px;
 }
 
 .about .content ul strong {
-  width: 150px; /* Feste Breite für die Label-Texte */
+  width: 120px; /* Breite für Konsistenz */
   margin-right: 10px; /* Abstand zwischen Label und Beschreibung */
-  text-align: left; /* Text linksbündig */
-}
-
-.about .content ul i {
-  margin-right: 8px; /* Abstand zwischen dem Symbol und dem Text */
-  font-size: 16px; /* Größe des Symbols */
-  color: var(--accent-color); /* Accent-Farbe für das Symbol */
+  text-align: left; /* Linksbündig */
+  display: block; /* Sicherstellen, dass das Element blockiert ist */
+  margin-top: 0; /* Entfernt unerwünschten Top-Abstand */
 }
 
 .about .content ul span {
-  line-height: 1.4; /* Verbesserte Lesbarkeit bei langen Beschreibungen */
+  line-height: 1.4; /* Lesbarkeit bei mehrzeiligen Beschreibungen */
 }
 
+.about .content ul i {
+  margin-right: 8px; /* Abstand zwischen Symbol und Label */
+  font-size: 16px; /* Größe des Symbols */
+  color: var(--accent-color); /* Accentfarbe */
+}
 
 /*--------------------------------------------------------------
 # Stats Section
