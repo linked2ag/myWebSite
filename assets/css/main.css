@@ -977,6 +977,24 @@ section,
   min-height: 320px;
 }
 
+ul li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+ul li i {
+  margin-right: 8px;
+}
+
+ul li strong {
+  width: 100px; /* Eine feste Breite für Konsistenz */
+}
+
+ul li span {
+  line-height: 1.5; /* Sorgt für bessere Lesbarkeit bei längeren Texten */
+}
+
 .testimonials .testimonial-item .testimonial-img {
   width: 90px;
   border-radius: 50%;
