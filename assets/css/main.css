@@ -634,12 +634,12 @@ section,
 /* Hauptausrichtung für die Liste */
 .about .content ul li {
   display: flex; /* Flexbox verwenden */
-  align-items: flex-start; /* Oben ausrichten */
+  text-align: flex-start; /* Oben ausrichten */
   margin-bottom: 15px; /* Optional: Abstand zwischen den Listenelementen */
 }
 
 .about .content ul strong {
-  width: 120px; /* Feste Breite für die Label-Texte */
+  width: 50px; /* Feste Breite für die Label-Texte */
   margin-right: 10px; /* Abstand zwischen Label und Beschreibung */
   text-align: left; /* Text linksbündig */
 }
