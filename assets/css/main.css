@@ -588,7 +588,7 @@ section,
 
 .hero p span {
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color);
+  border-top: 2px solid var(--accent-color);
 }
 
 .hero .social-links {
@@ -640,6 +640,7 @@ section,
 .about .content ul strong {
   margin-right: 10px;
   margin-top: 2px;
+  width: 200px; /* Eine feste Breite für Konsistenz */
 }
 
 .about .content ul i {
@@ -975,24 +976,6 @@ section,
   box-sizing: content-box;
   text-align: center;
   min-height: 320px;
-}
-
-ul li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-}
-
-ul li i {
-  margin-right: 8px;
-}
-
-ul li strong {
-  width: 200px; /* Eine feste Breite für Konsistenz */
-}
-
-ul li span {
-  line-height: 1.5; /* Sorgt für bessere Lesbarkeit bei längeren Texten */
 }
 
 .testimonials .testimonial-item .testimonial-img {
