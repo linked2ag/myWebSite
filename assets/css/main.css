@@ -632,27 +632,21 @@ section,
 }
 
 .about .content ul li {
+  margin-bottom: 20px;
   display: flex;
-  align-items: flex-start; /* Top-Bündigkeit */
-  margin-bottom: 15px;
+  align-items: center;
 }
 
 .about .content ul strong {
   width: 120px; /* Breite für Konsistenz */
-  margin-right: 10px; /* Abstand zwischen Label und Beschreibung */
-  text-align: left; /* Linksbündig */
-  display: block; /* Sicherstellen, dass das Element blockiert ist */
-  margin-top: 0; /* Entfernt unerwünschten Top-Abstand */
-}
-
-.about .content ul span {
-  line-height: 1.4; /* Lesbarkeit bei mehrzeiligen Beschreibungen */
+  margin-right: 10px;
 }
 
 .about .content ul i {
-  margin-right: 8px; /* Abstand zwischen Symbol und Label */
-  font-size: 16px; /* Größe des Symbols */
-  color: var(--accent-color); /* Accentfarbe */
+  font-size: 16px;
+  margin-right: 5px;
+  color: var(--accent-color);
+  line-height: 0;
 }
 
 /*--------------------------------------------------------------
