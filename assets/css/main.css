@@ -654,34 +654,30 @@ section,
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex; /* Flexbox verwenden */
-  flex-wrap: wrap; /* Zeilenumbruch erlauben bei kleineren Bildschirmen */
-  gap: 10px; /* Abstand zwischen den Elementen */
 }
 
 .about .content ul li {
-  display: flex;
-  align-items: center; /* Vertikale Zentrierung der Inhalte */
-  justify-content: space-between; /* Trennung von Label und Wert */
-  flex: 1 1 calc(50% - 20px); /* Flex-Elemente gleichmäßig verteilen */
-  min-width: 250px; /* Mindestbreite für jedes Listenelement */
-  padding: 5px 10px; /* Innenabstand für Konsistenz */
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  display: flex; /* Flexbox für horizontale Ausrichtung */
+  align-items: center; /* Vertikale Zentrierung */
+  justify-content: flex-start; /* Elemente links ausrichten */
+  margin-bottom: 10px; /* Abstand zwischen den Zeilen */
 }
 
 .about .content ul strong {
-  margin-right: auto; /* Abstand zwischen Label und Wert */
-  font-weight: 600; /* Label hervorheben */
+  flex: 0 0 150px; /* Feste Breite für die Labels */
+  text-align: left; /* Text links ausrichten */
+  font-weight: 600;
+  margin-right: 10px; /* Abstand zwischen Label und Wert */
 }
 
 .about .content ul span {
-  text-align: right; /* Wert rechts ausrichten */
+  flex: 1; /* Wert nimmt den restlichen Platz ein */
+  text-align: left; /* Text links ausrichten */
   font-weight: 400;
-  margin-left: auto;
 }
 
 .about .content ul i {
-  margin-right: 8px; /* Symbol-Abstand */
+  margin-right: 8px; /* Abstand zwischen Icon und Label */
   color: var(--accent-color);
 }
 
