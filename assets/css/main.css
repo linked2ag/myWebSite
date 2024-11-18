@@ -621,6 +621,7 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+/*
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;
@@ -646,6 +647,42 @@ section,
   margin-right: 5px;
   color: var(--accent-color);
   line-height: 0;
+}
+*/
+
+.about .content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; /* Flexbox verwenden */
+  flex-wrap: wrap; /* Zeilenumbruch erlauben bei kleineren Bildschirmen */
+  gap: 10px; /* Abstand zwischen den Elementen */
+}
+
+.about .content ul li {
+  display: flex;
+  align-items: center; /* Vertikale Zentrierung der Inhalte */
+  justify-content: space-between; /* Trennung von Label und Wert */
+  flex: 1 1 calc(50% - 20px); /* Flex-Elemente gleichmäßig verteilen */
+  min-width: 250px; /* Mindestbreite für jedes Listenelement */
+  padding: 5px 10px; /* Innenabstand für Konsistenz */
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.about .content ul strong {
+  margin-right: auto; /* Abstand zwischen Label und Wert */
+  font-weight: 600; /* Label hervorheben */
+}
+
+.about .content ul span {
+  text-align: right; /* Wert rechts ausrichten */
+  font-weight: 400;
+  margin-left: auto;
+}
+
+.about .content ul i {
+  margin-right: 8px; /* Symbol-Abstand */
+  color: var(--accent-color);
 }
 
 /*--------------------------------------------------------------
