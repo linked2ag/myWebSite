@@ -638,13 +638,7 @@ section,
 }
 
 .about .content ul strong {
-  width: 120px; /* Breite für Konsistenz */
   margin-right: 10px;
-  line-height: 1.4;
-}
-
-.about .content ul span {
-  line-height: 1.4;
 }
 
 .about .content ul i {
