@@ -970,10 +970,25 @@ section,
   color: #666;
 }
 
+/*
 .testimonials .testimonial-item {
   box-sizing: content-box;
   text-align: center;
-  min-height: 320px;
+  min-height: 320px; 
+}
+*/
+
+.testimonials .testimonial-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Text oben, Bild unten */
+  align-items: center; /* Zentriert den Inhalt horizontal */
+  height: 100%; /* Nimmt die gesamte Höhe ein */
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  background-color: var(--surface-color); /* Optional: Hintergrund */
+  border-radius: 8px; /* Optional: abgerundete Ecken */
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -1015,6 +1030,7 @@ section,
   transform: scale(-1, -1);
 }
 
+/*
 .testimonials .testimonial-item p {
   font-style: italic;
   margin: 0 15px 15px 15px;
@@ -1024,6 +1040,19 @@ section,
   margin-bottom: 35px;
   border-radius: 6px;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+*/
+
+.testimonials .testimonial-item p {
+  margin-bottom: auto; /* Erzwingt Abstand zum Footer */
+  font-style: italic;
+}
+
+.testimonials .testimonial-item .testimonial-footer {
+  margin-top: auto; /* Erzwingt die Position unten */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Zentriert den Footer */
 }
 
 .testimonials .testimonial-item p::after {
