@@ -634,12 +634,12 @@ section,
 /* Hauptausrichtung für die Liste */
 .about .content ul li {
   display: flex; /* Flexbox verwenden */
-  text-align: flex-start; /* Oben ausrichten */
+  align-items: flex-start; /* Top-Bündigkeit */
   margin-bottom: 15px; /* Optional: Abstand zwischen den Listenelementen */
 }
 
 .about .content ul strong {
-  width: 50px; /* Feste Breite für die Label-Texte */
+  width: 150px; /* Feste Breite für die Label-Texte */
   margin-right: 10px; /* Abstand zwischen Label und Beschreibung */
   text-align: left; /* Text linksbündig */
 }
@@ -651,7 +651,7 @@ section,
 }
 
 .about .content ul span {
-  line-height: 2.0; /* Verbesserte Lesbarkeit bei langen Beschreibungen */
+  line-height: 1.4; /* Verbesserte Lesbarkeit bei langen Beschreibungen */
 }
 
 
