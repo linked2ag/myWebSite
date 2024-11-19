@@ -681,6 +681,10 @@ section,
   color: var(--accent-color);
 }
 
+.section-title p {
+    margin-bottom: 20px; /* Adjust the value for desired spacing */
+}
+
 /*--------------------------------------------------------------
 # Stats Section
 --------------------------------------------------------------*/
