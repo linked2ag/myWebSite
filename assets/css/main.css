@@ -664,7 +664,7 @@ section,
 }
 
 .about .content ul strong {
-  flex: 0 0 100px; /* Feste Breite für die Labels */
+  flex: 0 0 120px; /* Feste Breite für die Labels */
   text-align: left; /* Text links ausrichten */
   font-weight: 600;
   margin-right: 10px; /* Abstand zwischen Label und Wert */
