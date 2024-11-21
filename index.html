@@ -396,87 +396,88 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-    <div class="container section-title">
-      <h2>Contact</h2>
-    </div>
+  <div class="container section-title">
+    <h2>Contact</h2>
+  </div>
 
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col-lg-7">
-          <form id="contactForm">
-            <div class="row gy-4">
+  <div class="container">
+    <div class="row gy-4">
+      <div class="col-lg-7">
+        <form id="contactForm">
+          <div class="row gy-4">
 
-              <div class="col-md-6">
-                <label for="name-field" class="pb-2">Your Name</label>
-                <input type="text" name="name" id="name-field" class="form-control" required="">
-              </div>
-
-              <div class="col-md-6">
-                <label for="email-field" class="pb-2">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email-field" required="">
-              </div>
-
-              <div class="col-md-12">
-                <label for="subject-field" class="pb-2">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject-field" required="">
-              </div>
-
-              <div class="col-md-12">
-                <label for="message-field" class="pb-2">Message</label>
-                <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-              </div>
-
-              <div class="col-md-12">
-                <label for="attachments-field" class="pb-2">Attachments</label>
-                <input type="file" class="form-control" name="attachments" id="attachments-field" multiple>
-                <small class="text-muted">You can attach multiple files (Max: 5 files, 5MB each).</small>
-              </div>
-
-              <div class="col-md-12 text-center">
-                <div id="loading" style="display: none;">Loading...</div>
-                <div id="error-message" style="color: red;"></div>
-                <div id="success-message" style="color: green;"></div>
-
-                <button type="button" id="sendButton">Send Message</button>
-              </div>
+            <div class="col-md-6">
+              <label for="name-field" class="pb-2">Your Name</label>
+              <input type="text" name="name" id="name-field" class="form-control" required="">
             </div>
-          </form>
-        </div>
+
+            <div class="col-md-6">
+              <label for="email-field" class="pb-2">Your Email</label>
+              <input type="email" class="form-control" name="email" id="email-field" required="">
+            </div>
+
+            <div class="col-md-12">
+              <label for="subject-field" class="pb-2">Subject</label>
+              <input type="text" class="form-control" name="subject" id="subject-field" required="">
+            </div>
+
+            <div class="col-md-12">
+              <label for="message-field" class="pb-2">Message</label>
+              <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+            </div>
+
+            <div class="col-md-12 text-center">
+              <div id="loading" style="display: none;">Loading...</div>
+              <div id="error-message" style="color: red;"></div>
+              <div id="success-message" style="color: green;"></div>
+
+              <button type="button" id="sendButton">Send Message</button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    document.getElementById("sendButton").addEventListener("click", function () {
-      // Hide previous messages
-      document.getElementById("loading").style.display = "block";
-      document.getElementById("error-message").innerText = "";
-      document.getElementById("success-message").innerText = "";
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+<script>
+  // Initialisiere EmailJS mit deiner User-ID
+  (function () {
+    emailjs.init("YOUR_EMAILJS_USER_ID");
+  })();
 
-      const form = document.getElementById("contactForm");
-      const formData = new FormData(form);
+  document.getElementById("sendButton").addEventListener("click", function () {
+    // Verstecke alte Nachrichten
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("error-message").innerText = "";
+    document.getElementById("success-message").innerText = "";
 
-      // Fetch API to send data
-      fetch("https://www.alex-g.info/forms/contact.php", {
-        method: "POST",
-        body: formData,
+    const name = document.getElementById("name-field").value;
+    const email = document.getElementById("email-field").value;
+    const subject = document.getElementById("subject-field").value;
+    const message = document.getElementById("message-field").value;
+
+    // Daten an EmailJS senden
+    emailjs
+      .send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        from_name: name,
+        from_email: email,
+        subject: subject,
+        message: message,
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.text();
-        })
-        .then((data) => {
+      .then(
+        function (response) {
           document.getElementById("loading").style.display = "none";
           document.getElementById("success-message").innerText = "Your message has been sent successfully!";
-        })
-        .catch((error) => {
+        },
+        function (error) {
           document.getElementById("loading").style.display = "none";
-          document.getElementById("error-message").innerText = "Failed to send message: " + error.message;
-        });
-    });
-  </script><!-- /Contact Section -->
+          document.getElementById("error-message").innerText = "Failed to send message: " + error.text;
+        }
+      );
+  });
+</script><!-- /Contact Section -->
 
   </main>
 
