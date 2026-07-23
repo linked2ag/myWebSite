@@ -3,45 +3,35 @@
   const STORAGE_KEY = "site-lang";
   let typedInstance = null;
 
-  function calculateYears() {
-    const currentYear = new Date().getFullYear();
-    const yearsElements = [
-      { id: 'dev-years', startYear: 2017 },
-      { id: 'sap-years', startYear: 2018 },
-      { id: 'vim-years', startYear: 2021 }
-    ];
-
-    yearsElements.forEach(function(item) {
-      const el = document.getElementById(item.id);
-      if (el) {
-        const years = currentYear - item.startYear;
-        el.textContent = years;
-      }
-    });
-  }
-
   function initTyped(lang) {
+    const typedElement = document.getElementById('typed-text');
+    if (!typedElement) return;
+
     if (typedInstance) {
       typedInstance.destroy();
+      typedInstance = null;
     }
 
-    const typedElement = document.getElementById('typed-text');
-    if (typedElement) {
-      typedElement.innerHTML = '';
+    typedElement.textContent = '';
 
-      const strings = lang === "de"
-        ? ['System Engineer', 'SAP Senior Consultant', 'VIM Senior Consultant', 'Software Developer']
-        : ['System Engineer', 'SAP Senior Consultant', 'VIM Senior Consultant', 'Software Developer'];
+    const strings = lang === "de"
+      ? ['System Engineer', 'SAP Senior Consultant', 'VIM Senior Consultant', 'Software Developer']
+      : ['System Engineer', 'SAP Senior Consultant', 'VIM Senior Consultant', 'Software Developer'];
 
-      typedInstance = new Typed('#typed-text', {
-        strings: strings,
-        typeSpeed: 100,
-        backSpeed: 50,
-        startDelay: 200,
-        showCursor: true,
-        cursorChar: '|',
-        loop: true
-      });
+    try {
+      if (typeof Typed !== 'undefined') {
+        typedInstance = new Typed('#typed-text', {
+          strings: strings,
+          typeSpeed: 100,
+          backSpeed: 50,
+          startDelay: 200,
+          showCursor: true,
+          cursorChar: '|',
+          loop: true
+        });
+      }
+    } catch (e) {
+      console.warn('Typed.js initialization error:', e);
     }
   }
 
