@@ -105,11 +105,11 @@
       <div class="container section-title" data-aos="fade-up">
         <h2>About Me</h2>
 
-        <p>I am a Systems Engineer with a specialization in computer science. With over 7 years of development experience and additionally more than 5 years of successfully managing complex projects, I have consistently delivered strategic improvements while directly collaborating with CEOs to achieve business goals.</p>
+        <p>I am a Systems Engineer with a specialization in computer science. With over <span id="dev-years" data-start-year="2017">7</span> years of development experience and additionally more than 5 years of successfully managing complex projects, I have consistently delivered strategic improvements while directly collaborating with CEOs to achieve business goals.</p>
 
-        <p>For more than 6 years, I have been working as an SAP consultant/senior consultant and developer, building deep expertise across a wide range of SAP topics. This enables me to achieve tailored, high-impact solutions that address diverse and complex business challenges effectively.</p>
+        <p>For more than <span id="sap-years" data-start-year="2018">6</span> years, I have been working as an SAP consultant/senior consultant and developer, building deep expertise across a wide range of SAP topics. This enables me to achieve tailored, high-impact solutions that address diverse and complex business challenges effectively.</p>
 
-        <p>As a certified OpenText VIM consultant, I have been representing a consulting company for over 3 years in the specialized field of electronic invoice processing by using a tool like OpenText solution for SAP, to drive process efficiency and compliance.</p>
+        <p>As a certified OpenText VIM consultant, I have been representing a consulting company for over <span id="vim-years" data-start-year="2021">3</span> years in the specialized field of electronic invoice processing by using a tool like OpenText solution for SAP, to drive process efficiency and compliance.</p>
 
         <p>My professional journey is defined by a commitment to continuous innovation, development, and optimization with innovative solutions at the core of my approach.</p>
 
@@ -279,6 +279,29 @@
 <!-- Main JS File -->
 
   <script src="assets/js/main.js"></script>
+
+  <!-- Dynamic years calculation -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentYear = new Date().getFullYear();
+
+      // Calculate and update experience years
+      const yearsElements = [
+        { id: 'dev-years' },
+        { id: 'sap-years' },
+        { id: 'vim-years' }
+      ];
+
+      yearsElements.forEach(element => {
+        const el = document.getElementById(element.id);
+        if (el && el.hasAttribute('data-start-year')) {
+          const startYear = parseInt(el.getAttribute('data-start-year'));
+          const years = currentYear - startYear;
+          el.textContent = years;
+        }
+      });
+    });
+  </script>
 
 </body>
 
