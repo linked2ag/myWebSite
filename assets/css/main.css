@@ -224,6 +224,32 @@ h6 {
   color: var(--contrast-color);
 }
 
+.about .content ul li {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 0;
+}
+
+.about .content ul li strong {
+  flex-shrink: 0;
+  width: 100px;
+  margin-right: 15px;
+}
+
+.about .content ul li span {
+  flex: 1;
+  word-wrap: break-word;
+}
+
+.about .content ul li span a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.about .content ul li span a:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 1200px) {
 
   .header~main,
