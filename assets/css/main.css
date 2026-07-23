@@ -194,6 +194,36 @@ h6 {
   background: var(--accent-color);
 }
 
+.header .lang-switch {
+  margin: 15px 0 0 0;
+}
+
+.header .lang-switch button {
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--default-color), transparent 90%);
+  color: var(--default-color);
+  border: none;
+  margin: 0 2px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.header .lang-switch button:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.header .lang-switch button.active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
 @media (min-width: 1200px) {
 
   .header~main,
