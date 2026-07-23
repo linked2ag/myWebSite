@@ -15,7 +15,7 @@
     typedElement.textContent = '';
 
     const strings = lang === "de"
-      ? ['System Engineer', 'SAP Senior Berater', 'VIM Senior Berater', 'Entwickler']
+      ? ['System Ingenieur', 'SAP Senior Berater', 'VIM Senior Berater', 'Entwickler']
       : ['System Engineer', 'SAP Senior Consultant', 'VIM Senior Consultant', 'Software Developer'];
 
     try {

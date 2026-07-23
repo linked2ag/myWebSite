@@ -224,6 +224,11 @@ h6 {
   border-bottom-color: var(--accent-color);
 }
 
+.hero p [data-en] {
+  border: none;
+  color: var(--default-color);
+}
+
 .about .content ul li {
   display: flex;
   align-items: center;
