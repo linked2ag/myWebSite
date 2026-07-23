@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'">
   <title>Digital Link to Alexander Geurkov</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -79,7 +80,7 @@
       </div>
       
       <!-- Include Typed.js library -->
-      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12" integrity="sha384-Iqv0rKaF7q5/p7SqBn7qjS9gIrO+k9jLPq7BeBZJVJVeXLKALAh4F1nKqbVJz7nI" crossorigin="anonymous"></script>
       
       <script>
         // Initialize Typed.js
@@ -129,9 +130,6 @@
               <div class="col-lg-6">
                 <ul>
 
-<!--                  
-                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>18 Mai 1979</span></li> 
--->
                   <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Kassel, Germany</span></li>
                   <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Systems Engineer</span></li>
                   
@@ -253,92 +251,6 @@
     </section><!-- /Skills Section -->
 
     <!-- Contact Section -->
-<!--
-    <section id="contact" class="contact section">
-  <div class="container section-title">
-    <h2>Contact</h2>
-  </div>
-
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-7">
-        <form id="contactForm">
-          <div class="row gy-4">
-
-            <div class="col-md-6">
-              <label for="name-field" class="pb-2">Your Name</label>
-              <input type="text" name="name" id="name-field" class="form-control" required="">
-            </div>
-
-            <div class="col-md-6">
-              <label for="email-field" class="pb-2">Your Email</label>
-              <input type="email" class="form-control" name="email" id="email-field" required="">
-            </div>
-
-            <div class="col-md-12">
-              <label for="subject-field" class="pb-2">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject-field" required="">
-            </div>
-
-            <div class="col-md-12">
-              <label for="message-field" class="pb-2">Message</label>
-              <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
-            </div>
-
-            <div class="col-md-12 text-center">
-              <div id="loading" style="display: none;">Loading...</div>
-              <div id="error-message" style="color: red;"></div>
-              <div id="success-message" style="color: green;"></div>
-
-              <button type="button" id="sendButton">Send Message</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-<script>
-  // Initialisiere EmailJS mit deiner User-ID
-  (function () {
-    emailjs.init("jZMmsXo_tORMf_tRn");
-  })();
-
-  document.getElementById("sendButton").addEventListener("click", function () {
-    // Verstecke alte Nachrichten
-    document.getElementById("loading").style.display = "block";
-    document.getElementById("error-message").innerText = "";
-    document.getElementById("success-message").innerText = "";
-
-    const name = document.getElementById("name-field").value;
-    const email = document.getElementById("email-field").value;
-    const subject = document.getElementById("subject-field").value;
-    const message = document.getElementById("message-field").value;
-
-    // Daten an EmailJS senden
-    emailjs
-      .send("service_ul28jzi", "template_q7d4wqg", {
-        from_name: name,
-        from_email: email,
-        subject: subject,
-        message: message,
-      })
-      .then(
-        function (response) {
-          document.getElementById("loading").style.display = "none";
-          document.getElementById("success-message").innerText = "Your message has been sent successfully!";
-        },
-        function (error) {
-          document.getElementById("loading").style.display = "none";
-          document.getElementById("error-message").innerText = "Failed to send message: " + error.text;
-        }
-      );
-  });
-
-</script>  
--->
 <!-- /Contact Section -->
 
   </main>
@@ -371,116 +283,3 @@
 </body>
 
 </html>
-
-<script>
-
-  document.getElementById("submit-button").addEventListener("click", function () {
-      const form = document.querySelector(".php-email-form");
-      const formData = new FormData(form);
-
-      // Füge die hochgeladenen Dateien hinzu
-      const attachments = document.getElementById("attachment-field").files;
-      for (let i = 0; i < attachments.length; i++) {
-        formData.append("attachments[]", attachments[i]);
-      }
-
-      // Sende das Formular und die Anhänge
-      fetch('forms/contact.php', {
-        method: 'POST',
-        body: formData
-      })
-        .then(response => response.text())
-        .then(data => {
-          if (data.trim() === 'success') {
-            document.querySelector('.sent-message').style.display = 'block';
-            document.querySelector('.error-message').style.display = 'none';
-            form.reset(); // Setzt das Formular zurück
-          } else {
-            document.querySelector('.error-message').style.display = 'block';
-            document.querySelector('.sent-message').style.display = 'none';
-          }
-        })
-        .catch(error => {
-          document.querySelector('.error-message').style.display = 'block';
-          document.querySelector('.sent-message').style.display = 'none';
-        });
-    });
-
-    document.getElementById("submit-button").addEventListener("click", function() {
-    const form = document.getElementById("contact-form");
-    const formData = new FormData(form);
-
-    // Add attachments
-    const attachments = document.getElementById("attachment-field").files;
-    for (let i = 0; i < attachments.length; i++) {
-      formData.append("attachments[]", attachments[i]);
-    }
-
-    // Send the email using a mock API or external email service
-    fetch("https://example-email-api.com/send", { // Replace with your email API
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        if (response.ok) {
-          document.querySelector(".sent-message").style.display = "block";
-          document.querySelector(".error-message").style.display = "none";
-          form.reset();
-        } else {
-          document.querySelector(".sent-message").style.display = "none";
-          document.querySelector(".error-message").textContent =
-            "There was an error sending your message. Please try again.";
-          document.querySelector(".error-message").style.display = "block";
-        }
-      })
-      .catch((error) => {
-        document.querySelector(".sent-message").style.display = "none";
-        document.querySelector(".error-message").textContent =
-          "There was an error sending your message. Please try again.";
-        document.querySelector(".error-message").style.display = "block";
-      });
-  });
-  document.querySelector('.php-email-form').addEventListener('submit', function(e) {
-    e.preventDefault(); // Prevent default form submission
-    const formData = new FormData(this);
-    
-    fetch('forms/contact.php', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.text())
-    .then(data => {
-      if (data.trim() === 'success') {
-        document.querySelector('.sent-message').style.display = 'block';
-        document.querySelector('.error-message').style.display = 'none';
-      } else {
-        document.querySelector('.error-message').style.display = 'block';
-        document.querySelector('.sent-message').style.display = 'none';
-      }
-    })
-    .catch(error => {
-      document.querySelector('.error-message').style.display = 'block';
-      document.querySelector('.sent-message').style.display = 'none';
-    });
-  });
-
-  // Geburtstagsdatum
-  const birthday = new Date("1979-05-18");
-
-  // Heutiges Datum
-  const today = new Date();
-
-  // Alter berechnen
-  let age = today.getFullYear() - birthday.getFullYear();
-  const monthDiff = today.getMonth() - birthday.getMonth();
-  const dayDiff = today.getDate() - birthday.getDate();
-
-  // Korrigieren, wenn noch kein Geburtstag in diesem Jahr war
-  if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
-    age--;
-  }
-
-  // Alter ins HTML einfügen
-  document.getElementById("age").textContent = age;
-
-</script>
