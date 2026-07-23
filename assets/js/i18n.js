@@ -43,12 +43,16 @@
     const sapYears = currentYear - 2018;
     const vimYears = currentYear - 2021;
 
-    document.querySelectorAll("[data-en]").forEach(function (el) {
-      let text = lang === "de" ? (el.getAttribute("data-de") || el.getAttribute("data-en")) : el.getAttribute("data-en");
-      text = text.replace(/\[dev-years\]/g, devYears);
-      text = text.replace(/\[sap-years\]/g, sapYears);
-      text = text.replace(/\[vim-years\]/g, vimYears);
-      el.innerHTML = text;
+    document.querySelectorAll("[data-de]").forEach(function (el) {
+      let text;
+      if (lang === "de") {
+        text = el.getAttribute("data-de");
+        text = text.replace(/\[dev-years\]/g, devYears);
+        text = text.replace(/\[sap-years\]/g, sapYears);
+        text = text.replace(/\[vim-years\]/g, vimYears);
+        el.innerHTML = text;
+      }
+      // For EN: do nothing, keep inner text as fallback
     });
 
     document.querySelectorAll(".lang-switch button").forEach(function (btn) {
