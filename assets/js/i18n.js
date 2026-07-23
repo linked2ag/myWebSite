@@ -47,12 +47,16 @@
       let text;
       if (lang === "de") {
         text = el.getAttribute("data-de");
+      } else {
+        text = el.getAttribute("data-en");
+      }
+
+      if (text) {
         text = text.replace(/\[dev-years\]/g, devYears);
         text = text.replace(/\[sap-years\]/g, sapYears);
         text = text.replace(/\[vim-years\]/g, vimYears);
         el.innerHTML = text;
       }
-      // For EN: do nothing, keep inner text as fallback
     });
 
     document.querySelectorAll(".lang-switch button").forEach(function (btn) {
@@ -68,6 +72,13 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    // Store original English text as data-en attribute for switching between languages
+    document.querySelectorAll("[data-de]").forEach(function (el) {
+      if (!el.hasAttribute("data-en")) {
+        el.setAttribute("data-en", el.innerHTML);
+      }
+    });
+
     document.querySelectorAll(".lang-switch button").forEach(function (btn) {
       btn.addEventListener("click", function () {
         setLang(btn.dataset.lang);
